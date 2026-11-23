@@ -57,6 +57,7 @@ El proyecto queda publicado en `https://nicolasarielcc.github.io/viajes-nicolas-
 viajes/
 ├── public/
 │   └── mockServiceWorker.js      # Service Worker de MSW
+├── screenshots/                  # Evidencia de pruebas en navegadores
 ├── src/
 │   ├── components/               # Componentes reutilizables
 │   │   ├── Layout.jsx
@@ -88,6 +89,44 @@ viajes/
 - **REST** — `GET /api/destinos` → lista de destinos.
 - **GraphQL** — `query GetViaje($destinoId: ID!)` → `{ vuelos, hoteles }` del destino solicitado.
 
-## Pruebas en navegadores
+## Pruebas en navegadores y diseño responsivo
 
-La aplicación fue verificada en **Chromium** (prueba automatizada): carga del listado (6 destinos vía REST) y navegación al detalle (vuelos y hoteles vía GraphQL) sin errores en consola. La estructura usa propiedades CSS estándar y un diseño responsive (`@media`) compatible con Chrome, Edge, Firefox y Safari.
+La aplicación fue verificada de forma automatizada (Playwright) en **dos motores de navegador** — **Chromium** (motor Blink, base de Google Chrome y Microsoft Edge) y **Firefox** (motor Gecko) — en **tres formatos responsivos**: escritorio, tablet y móvil.
+
+En cada combinación se validó:
+
+- Carga del listado de destinos vía **REST** (6 destinos).
+- Carga del detalle de vuelos (3) y hoteles (3) vía **GraphQL**.
+- Navegación fluida entre vistas con React Router.
+- Ausencia de errores de consola y de desbordamiento horizontal (`scrollWidth` ≤ ancho de viewport).
+
+### Matriz de compatibilidad
+
+| Navegador | Motor | Escritorio (1280×800) | Tablet (768×1024) | Móvil (390×844) |
+|---|---|---|---|---|
+| Chromium (Chrome / Edge) | Blink | ✅ | ✅ | ✅ |
+| Firefox | Gecko | ✅ | ✅ | ✅ |
+
+> El proyecto usa solo APIs web estándar (CSS Grid/Flexbox, ES Modules, `fetch`, Service Worker), por lo que es compatible también con WebKit/Safari.
+
+### Capturas
+
+**Listado de destinos — escritorio (1280×800)**
+
+| Chromium | Firefox |
+|---|---|
+| <img src="screenshots/chromium-desktop-home.png" width="420" alt="Home escritorio Chromium"> | <img src="screenshots/firefox-desktop-home.png" width="420" alt="Home escritorio Firefox"> |
+
+**Listado de destinos — móvil (390×844)**
+
+| Chromium | Firefox |
+|---|---|
+| <img src="screenshots/chromium-mobile-home.png" width="180" alt="Home móvil Chromium"> | <img src="screenshots/firefox-mobile-home.png" width="180" alt="Home móvil Firefox"> |
+
+**Detalle de vuelos y hoteles (GraphQL)**
+
+| Escritorio (Chromium) | Móvil (Chromium) |
+|---|---|
+| <img src="screenshots/chromium-desktop-detalle.png" width="420" alt="Detalle escritorio"> | <img src="screenshots/chromium-mobile-detalle.png" width="180" alt="Detalle móvil"> |
+
+> El directorio [`screenshots/`](screenshots/) contiene la evidencia completa de las 12 combinaciones probadas (2 navegadores × 3 viewports × 2 vistas).
