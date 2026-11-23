@@ -8,10 +8,10 @@ Aplicación de agencia de viajes construida con **React** que permite explorar *
 
 | Herramienta | Uso |
 |---|---|
-| React 18 + Vite | Interfaz (componentes funcionales + hooks). |
-| React Router DOM 6 | Navegación SPA entre vistas. |
-| MSW (Mock Service Worker) | Backend mock para REST y GraphQL. |
-| Apollo Client + GraphQL | Consultas GraphQL a vuelos y hoteles. |
+| React 19 + Vite | Interfaz (componentes funcionales + hooks). |
+| React Router DOM 7 | Navegación SPA entre vistas. |
+| MSW (Mock Service Worker) 3 | Backend mock para REST y GraphQL. |
+| Apollo Client 4 + GraphQL | Consultas GraphQL a vuelos y hoteles. |
 | CSS puro (responsivo) | Estilos y diseño responsive. |
 
 ## Funcionalidades
@@ -33,7 +33,7 @@ npm install
 npm run dev
 ```
 
-Abre la URL que muestra Vite (por defecto `http://localhost:5173/S5_Frontend_II/`).
+Abre la URL que muestra Vite (por defecto `http://localhost:5173/viajes-nicolas-cavieres-PFY2202/`).
 
 ## Compilar para producción
 
@@ -47,7 +47,7 @@ npm run build
 npm run deploy
 ```
 
-El proyecto queda publicado en `https://nicolasarielcc.github.io/S5_Frontend_II/`.
+El proyecto queda publicado en `https://nicolasarielcc.github.io/viajes-nicolas-cavieres-PFY2202/`.
 
 > Nota: se usa `HashRouter` para que la navegación por rutas funcione sin configuración extra del servidor en GitHub Pages (evita el error 404 al recargar una subruta). Los mocks de MSW se habilitan también en producción para que la app muestre datos reales (simulados) en el despliegue.
 
@@ -80,7 +80,7 @@ viajes/
 │   ├── App.jsx                   # Rutas (HashRouter + ApolloProvider)
 │   ├── main.jsx                  # Bootstrap + habilitación de MSW
 │   └── index.css                 # Estilos y diseño responsive
-└── vite.config.js                # base: '/S5_Frontend_II/'
+└── vite.config.js                # base: '/viajes-nicolas-cavieres-PFY2202/'
 ```
 
 ## Backend mock

@@ -1,5 +1,8 @@
-import { http, graphql, HttpResponse, delay } from "msw";
+import { http, HttpResponse, delay } from "msw";
+import { graphql } from "msw/graphql";
 import { destinos, viajes } from "../data/destinos";
+
+const apiGraphQL = graphql.link("*/graphql");
 
 export const handlers = [
   http.get("*/api/destinos", async () => {
@@ -7,7 +10,7 @@ export const handlers = [
     return HttpResponse.json(destinos);
   }),
 
-  graphql.query("GetViaje", async ({ variables }) => {
+  apiGraphQL.query("GetViaje", async ({ variables }) => {
     await delay(600);
     const { destinoId } = variables;
     const viaje = viajes[destinoId];

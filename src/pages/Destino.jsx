@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import { GET_VIAJE } from "../graphql/queries";
 import FlightCard from "../components/FlightCard";
 import HotelCard from "../components/HotelCard";

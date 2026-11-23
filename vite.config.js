@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/S5_Frontend_II/',
+  base: '/viajes-nicolas-cavieres-PFY2202/',
 })
